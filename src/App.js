@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Filters from './components/Filters';
+import TopSelectedFilters from './components/TopSelectedFilters';
+import { useGlobal } from './Context';
 
 function App() {
+  const {state, dispatch} = useGlobal();
+
+  const {customFilters, selected} = state;
+
+  console.log(customFilters)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Filters customFilters={customFilters} />
+      <TopSelectedFilters customFilters={customFilters} selected={selected} />
     </div>
   );
 }
-
 export default App;
